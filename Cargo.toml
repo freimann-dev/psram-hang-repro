@@ -1,0 +1,19 @@
+[package]
+name = "psram-hang-repro"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+esp-alloc = { version = "=0.11.0", features = ["esp32s3"] }
+esp-backtrace = { version = "=0.20.0", features = ["esp32s3", "println", "panic-handler"] }
+esp-bootloader-esp-idf = { version = "=0.6.0", features = ["esp32s3"] }
+esp-hal = { version = "=1.2.2", features = ["esp32s3", "unstable", "log-04"] }
+esp-println = { version = "=0.18.0", features = ["esp32s3", "log-04"] }
+log = "=0.4.34"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+panic = "abort"
+codegen-units = 1
+debug = false
